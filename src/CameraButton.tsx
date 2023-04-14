@@ -1,6 +1,6 @@
-import { CameraScreen} from 'react-native-camera-kit';
-import React, {useEffect, useRef, useState} from 'react';
-import {Button, PermissionsAndroid, View} from 'react-native';
+import { CameraScreen } from 'react-native-camera-kit';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button, PermissionsAndroid, View } from 'react-native';
 
 const randomPng = require('./random-png.png');
 
@@ -10,7 +10,7 @@ export function CameraButton() {
   async function requestCamPermission(): Promise<boolean> {
     const result = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA,
-      {buttonPositive: 'Yes', title: 'LOL', message: 'banan'},
+      { buttonPositive: 'Yes', title: 'LOL', message: 'banan' },
     );
 
     return result === PermissionsAndroid.RESULTS.GRANTED;
@@ -19,7 +19,7 @@ export function CameraButton() {
   async function requestWritePermission(): Promise<boolean> {
     const result = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-      {buttonPositive: 'Yes', title: 'LOL', message: 'banan'},
+      { buttonPositive: 'Yes', title: 'LOL', message: 'banan' },
     );
 
     return result === PermissionsAndroid.RESULTS.GRANTED;
@@ -28,7 +28,7 @@ export function CameraButton() {
   async function requestReadPermission(): Promise<boolean> {
     const result = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      {buttonPositive: 'Yes', title: 'LOL', message: 'banan'},
+      { buttonPositive: 'Yes', title: 'LOL', message: 'banan' },
     );
 
     return result === PermissionsAndroid.RESULTS.GRANTED;
@@ -69,7 +69,6 @@ function OpenableCameraScreen() {
   }
 
   return (
-
     <View
       style={{
         display: 'flex',
