@@ -1,10 +1,8 @@
-import {Camera, CameraScreen} from 'react-native-camera-kit';
+import { CameraScreen} from 'react-native-camera-kit';
 import React, {useEffect, useRef, useState} from 'react';
 import {Button, PermissionsAndroid, View} from 'react-native';
 
-const lolImage = require('./lol.png');
-
-console.log('lolimage', lolImage);
+const randomPng = require('./random-png.png');
 
 export function CameraButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +79,7 @@ function OpenableCameraScreen() {
       <CameraScreen
         onBottomButtonPressed={onBottomButtonPressed}
         scanBarcode={false}
-        captureButtonImage={lolImage}
+        captureButtonImage={randomPng}
         captureButtonImageStyle={{
           marginTop: 150,
           marginRight: 'auto',
