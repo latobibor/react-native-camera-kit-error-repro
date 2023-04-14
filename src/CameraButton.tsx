@@ -1,8 +1,8 @@
 import { CameraScreen } from 'react-native-camera-kit';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, PermissionsAndroid, View } from 'react-native';
 
-const randomPng = require('./random-png.png');
+const justACircle = require('./circle.png');
 
 export function CameraButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,13 +35,13 @@ export function CameraButton() {
   }
 
   useEffect(() => {
-    async function lol() {
+    async function requestPermissions() {
       await requestCamPermission();
       await requestWritePermission();
       await requestReadPermission();
     }
 
-    lol();
+    requestPermissions().catch(console.error);
   }, []);
 
   return (
@@ -57,15 +57,8 @@ export function CameraButton() {
 }
 
 function OpenableCameraScreen() {
-  const cameraRef = useRef();
-
   function onBottomButtonPressed(event: any) {
-    console.log('helloka', event);
-
-    const images = JSON.stringify(event.captureImages);
-
-    console.log('event type', event.type);
-    console.log('images', images.substring(0, 10));
+    console.log('event that never arrives', event);
   }
 
   return (
@@ -78,15 +71,19 @@ function OpenableCameraScreen() {
       <CameraScreen
         onBottomButtonPressed={onBottomButtonPressed}
         scanBarcode={false}
-        captureButtonImage={randomPng}
+        allowCaptureRetake={false}
+        showCapturedImageCount={true}
+
         captureButtonImageStyle={{
           marginTop: 150,
           marginRight: 'auto',
           borderColor: 'red',
           borderWidth: 2,
         }}
-        allowCaptureRetake={false}
-        showCapturedImageCount={true}
+        captureButtonImage={justACircle}
+        cameraFlipImage={justACircle}
+        torchOnImage={justACircle}
+        torchOffImage={justACircle}
       />
     </View>
   );
